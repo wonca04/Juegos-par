@@ -30,22 +30,23 @@
     .reel-strip { display: flex; flex-direction: column; align-items: center; transition: transform 3s cubic-bezier(0.1, 0.9, 0.2, 1); }
     .reel-item { height: 120px; width: 100%; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: bold; text-transform: uppercase; color: #fff; padding: 5px; box-sizing: border-box; text-shadow: 0 2px 4px rgba(0,0,0,0.5); border-bottom: 1px solid #333; word-wrap: break-word; }
 
-    /* ESTILOS DE TARJETAS Y NIVELES */
-    .lvl-1 { border-color: #00ff88; color: #00ff88; }
-    .lvl-2 { border-color: #ffaa00; color: #ffaa00; }
-    .lvl-3 { border-color: #ff0055; color: #ff0055; }
+    /* ESTILOS DE NIVELES */
+    .lvl-1 { border-color: #00ff88; color: #00ff88; } /* Fácil */
+    .lvl-2 { border-color: #ffaa00; color: #ffaa00; } /* Medio */
+    .lvl-3 { border-color: #ff0055; color: #ff0055; } /* Difícil */
     
     .card { background: #1a1a1a; border: 1px solid #444; padding: 20px; border-radius: 20px; margin-bottom: 20px; width: 95%; max-width: 380px; min-height: 120px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 22px; }
     
-    /* ESTILO ESPECÍFICO PARA LA FOTO DE POSICIÓN */
+    /* CORRECCIÓN: ESTILO PARA QUE LA FOTO NO DE ERROR */
     .pos-img { 
         width: 100%; 
-        max-height: 300px; /* Tamaño máximo para que no ocupe toda la pantalla */
+        max-height: 300px; 
         object-fit: contain; 
         border-radius: 10px; 
         margin-bottom: 15px; 
         border: 2px solid #333;
         background-color: #000;
+        display: block;
     }
     .pos-name {
         font-size: 24px;
@@ -117,6 +118,7 @@
         <button class="btn lvl-3" onclick="selectLevelPos('dificil')">🔴 Difícil</button>
         <button class="back-btn" onclick="nav('menu')">Volver</button>
     </div>
+    
     <div id="game_pos" class="screen">
         <h2 id="posTitle">POSICIÓN</h2>
         
@@ -140,12 +142,15 @@
     let diceMode = 'mix';
 
     window.onload = function() {
-        if(window.DATOS_POSICIONES && window.DATOS_VR && window.DATOS_DADOS) {
-            nav('login');
-        } else {
-            console.log("Intentando cargar login...");
-            nav('login');
-        }
+        // Pequeño retardo para asegurar que GitHub carga los archivos externos
+        setTimeout(() => {
+            if(window.DATOS_POSICIONES && window.DATOS_VR && window.DATOS_DADOS) {
+                nav('login');
+            } else {
+                console.log("Carga forzada del login...");
+                nav('login');
+            }
+        }, 500);
     };
 
     function nav(id) {
@@ -234,7 +239,7 @@
         document.getElementById('vrCard').innerText = prefix + rand(list);
     }
 
-    // --- POSICIONES (CON FOTO) ---
+    // --- POSICIONES (CORRECCIÓN OBJETO) ---
     function selectLevelPos(lvl) {
         currentLevelPos = lvl;
         document.getElementById('posTitle').innerText = "DIFICULTAD: " + lvl.toUpperCase();
@@ -243,18 +248,28 @@
     }
 
     function playPos() {
+        // 1. Obtener la lista del nivel
         const list = window.DATOS_POSICIONES[currentLevelPos];
+        
+        // 2. Elegir una al azar
         const item = rand(list);
         
         if(!item) return;
 
         let html = "";
-        // Comprobar si tiene imagen
-        if(item.img && item.img.startsWith('http')) {
-            html += `<img src="${item.img}" class="pos-img" alt="Posición">`;
+        
+        // 3. Comprobar si es un objeto con foto o solo texto
+        // Aquí estaba el error [object Object]. Ahora lo detectamos.
+        if (typeof item === 'object' && item.nombre) {
+            // Es un objeto (tiene foto y nombre)
+            if(item.img && item.img.startsWith('http')) {
+                html += `<img src="${item.img}" class="pos-img" alt="Posición">`;
+            }
+            html += `<div class="pos-name">${item.nombre}</div>`;
+        } else {
+            // Es solo texto (por si acaso quedaron datos viejos)
+            html += `<div class="pos-name">${item}</div>`;
         }
-        // Poner Nombre
-        html += `<div class="pos-name">${item.nombre}</div>`;
         
         document.getElementById('posCard').innerHTML = html;
     }
