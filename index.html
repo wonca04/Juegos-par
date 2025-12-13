@@ -17,7 +17,7 @@
     
     .btn { background: #111; border: 1px solid #333; color: white; padding: 18px; margin: 8px; width: 85%; max-width: 320px; font-size: 18px; font-weight: bold; border-radius: 12px; cursor: pointer; transition: 0.2s; box-shadow: 0 4px 6px rgba(0,0,0,0.5); }
     .btn:active { transform: scale(0.98); }
-    .btn-action { background: linear-gradient(45deg, #ff0055, #bf00ff); border: none; color: white; font-size: 20px; margin-top: 30px; box-shadow: 0 0 15px rgba(255, 0, 85, 0.4); }
+    .btn-action { background: linear-gradient(45deg, #ff0055, #bf00ff); border: none; color: white; font-size: 20px; margin-top: 20px; box-shadow: 0 0 15px rgba(255, 0, 85, 0.4); }
 
     /* BOTONES DE MODO DADOS */
     .mode-container { display: flex; gap: 5px; margin-bottom: 15px; }
@@ -30,12 +30,31 @@
     .reel-strip { display: flex; flex-direction: column; align-items: center; transition: transform 3s cubic-bezier(0.1, 0.9, 0.2, 1); }
     .reel-item { height: 120px; width: 100%; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: bold; text-transform: uppercase; color: #fff; padding: 5px; box-sizing: border-box; text-shadow: 0 2px 4px rgba(0,0,0,0.5); border-bottom: 1px solid #333; word-wrap: break-word; }
 
-    /* ESTILOS DE NIVELES Y EXTRAS */
+    /* ESTILOS DE TARJETAS Y NIVELES */
     .lvl-1 { border-color: #00ff88; color: #00ff88; }
     .lvl-2 { border-color: #ffaa00; color: #ffaa00; }
     .lvl-3 { border-color: #ff0055; color: #ff0055; }
-    .lvl-4 { border-color: #bf00ff; color: #bf00ff; }
-    .card { background: #1a1a1a; border: 1px solid #444; padding: 30px; border-radius: 20px; margin-bottom: 20px; width: 90%; max-width: 350px; font-size: 22px; min-height: 120px; display: flex; align-items: center; justify-content: center; }
+    
+    .card { background: #1a1a1a; border: 1px solid #444; padding: 20px; border-radius: 20px; margin-bottom: 20px; width: 95%; max-width: 380px; min-height: 120px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 22px; }
+    
+    /* ESTILO ESPECÍFICO PARA LA FOTO DE POSICIÓN */
+    .pos-img { 
+        width: 100%; 
+        max-height: 300px; /* Tamaño máximo para que no ocupe toda la pantalla */
+        object-fit: contain; 
+        border-radius: 10px; 
+        margin-bottom: 15px; 
+        border: 2px solid #333;
+        background-color: #000;
+    }
+    .pos-name {
+        font-size: 24px;
+        font-weight: bold;
+        color: #00ff88;
+        text-transform: uppercase;
+        text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+    }
+
     input { padding: 15px; font-size: 24px; text-align: center; border-radius: 10px; border: 1px solid #555; background: #222; color: white; margin-bottom: 20px; width: 60%; outline: none; }
     .back-btn { background: transparent; border: none; color: #777; margin-top: 30px; text-decoration: underline; font-size: 16px; }
 </style>
@@ -59,19 +78,16 @@
 
     <div id="dados" class="screen">
         <h2 style="color:#ff0055">RULETA TRIPLE</h2>
-        
         <div class="mode-container">
             <button id="btnSuave" class="btn-mode" onclick="setMode('suave')">☁️ Suave</button>
             <button id="btnMix" class="btn-mode selected" onclick="setMode('mix')">🔀 Mix</button>
             <button id="btnPicante" class="btn-mode" onclick="setMode('picante')">🔥 Picante</button>
         </div>
-
         <div class="slots-container">
             <div class="reel-window"><div id="strip1" class="reel-strip"><div class="reel-item">❓</div></div></div>
             <div class="reel-window"><div id="strip2" class="reel-strip"><div class="reel-item">❓</div></div></div>
             <div class="reel-window" style="border-color:#00e5ff"><div id="strip3" class="reel-strip"><div class="reel-item">⏱️</div></div></div>
         </div>
-
         <button class="btn btn-action" onclick="spinRoulette()">¡GIRAR!</button>
         <button class="back-btn" onclick="nav('menu')">Volver</button>
     </div>
@@ -81,7 +97,7 @@
         <button class="btn lvl-1" onclick="selectLevelVR('suave')">☁️ Suave</button>
         <button class="btn lvl-2" onclick="selectLevelVR('hot')">🔥 Hot</button>
         <button class="btn lvl-3" onclick="selectLevelVR('duro')">😈 Duro</button>
-        <button class="btn lvl-4" onclick="selectLevelVR('extremo')">💀 Extremo</button>
+        <button class="btn lvl-4" style="border-color:#bf00ff; color:#bf00ff;" onclick="selectLevelVR('extremo')">💀 Extremo</button>
         <button class="back-btn" onclick="nav('menu')">Volver</button>
     </div>
     <div id="game_vr" class="screen">
@@ -99,12 +115,15 @@
         <button class="btn lvl-1" onclick="selectLevelPos('facil')">🟢 Fácil</button>
         <button class="btn lvl-2" onclick="selectLevelPos('medio')">🟠 Medio</button>
         <button class="btn lvl-3" onclick="selectLevelPos('dificil')">🔴 Difícil</button>
-        <button class="btn lvl-4" onclick="selectLevelPos('extremo')">🟣 Extremo</button>
         <button class="back-btn" onclick="nav('menu')">Volver</button>
     </div>
     <div id="game_pos" class="screen">
         <h2 id="posTitle">POSICIÓN</h2>
-        <div id="posCard" class="card">...</div>
+        
+        <div id="posCard" class="card" style="border:none; background:transparent;">
+            <p>Pulsa siguiente...</p>
+        </div>
+
         <button class="btn btn-action" onclick="playPos()">SIGUIENTE</button>
         <button class="back-btn" onclick="nav('menu_pos')">Cambiar</button>
     </div>
@@ -118,13 +137,13 @@
     let currentLevelVR = '';
     let currentLevelPos = '';
     let isSpinning = false;
-    let diceMode = 'mix'; // Por defecto MIX
+    let diceMode = 'mix';
 
     window.onload = function() {
         if(window.DATOS_POSICIONES && window.DATOS_VR && window.DATOS_DADOS) {
             nav('login');
         } else {
-            console.log("Error cargando datos.");
+            console.log("Intentando cargar login...");
             nav('login');
         }
     };
@@ -138,14 +157,13 @@
         else alert("Contraseña incorrecta");
     }
     function rand(arr) { 
-        if(!arr || arr.length === 0) return "?";
+        if(!arr || arr.length === 0) return null;
         return arr[Math.floor(Math.random() * arr.length)]; 
     }
 
-    // --- LÓGICA DE DADOS CON MODOS ---
+    // --- RULETA ---
     function setMode(mode) {
         diceMode = mode;
-        // Actualizar visualmente los botones
         document.querySelectorAll('.btn-mode').forEach(b => b.classList.remove('selected'));
         if(mode === 'suave') document.getElementById('btnSuave').classList.add('selected');
         if(mode === 'mix') document.getElementById('btnMix').classList.add('selected');
@@ -156,39 +174,25 @@
         if(isSpinning) return;
         isSpinning = true;
 
-        // 1. Obtener las listas base
         const d = window.DATOS_DADOS;
-        let poolAcciones = [];
-        let poolPartes = [];
-        let poolTiempos = [];
+        let pAcc = [], pPar = [], pTie = [];
 
-        // 2. Filtrar según el modo elegido
         if (diceMode === 'suave') {
-            poolAcciones = d.suave.acciones;
-            poolPartes = d.suave.partes;
-            poolTiempos = d.suave.tiempos;
+            pAcc = d.suave.acciones; pPar = d.suave.partes; pTie = d.suave.tiempos;
         } else if (diceMode === 'picante') {
-            poolAcciones = d.picante.acciones;
-            poolPartes = d.picante.partes;
-            poolTiempos = d.picante.tiempos;
+            pAcc = d.picante.acciones; pPar = d.picante.partes; pTie = d.picante.tiempos;
         } else {
-            // MODO MIX: Juntamos todo
-            poolAcciones = d.suave.acciones.concat(d.picante.acciones);
-            poolPartes = d.suave.partes.concat(d.picante.partes);
-            poolTiempos = d.suave.tiempos.concat(d.picante.tiempos);
+            pAcc = d.suave.acciones.concat(d.picante.acciones);
+            pPar = d.suave.partes.concat(d.picante.partes);
+            pTie = d.suave.tiempos.concat(d.picante.tiempos);
         }
 
-        // 3. Elegir ganadores
-        const gAccion = rand(poolAcciones);
-        const gParte = rand(poolPartes);
-        const gTiempo = rand(poolTiempos);
+        const gAcc = rand(pAcc); const gPar = rand(pPar); const gTie = rand(pTie);
 
-        // 4. Crear tiras
-        buildStrip('strip1', poolAcciones, gAccion);
-        buildStrip('strip2', poolPartes, gParte);
-        buildStrip('strip3', poolTiempos, gTiempo);
+        buildStrip('strip1', pAcc, gAcc);
+        buildStrip('strip2', pPar, gPar);
+        buildStrip('strip3', pTie, gTie);
 
-        // 5. Animación
         ['strip1', 'strip2', 'strip3'].forEach(id => {
             const el = document.getElementById(id);
             el.style.transition = 'none';
@@ -196,33 +200,28 @@
         });
 
         setTimeout(() => {
-            const pixelDesplazamiento = -120 * 30;
-            const s1 = document.getElementById('strip1');
-            s1.style.transition = 'transform 3s cubic-bezier(0.1, 0.9, 0.2, 1)';
-            s1.style.transform = `translateY(${pixelDesplazamiento}px)`;
-
-            const s2 = document.getElementById('strip2');
-            s2.style.transition = 'transform 3.5s cubic-bezier(0.1, 0.9, 0.2, 1)';
-            s2.style.transform = `translateY(${pixelDesplazamiento}px)`;
-
-            const s3 = document.getElementById('strip3');
-            s3.style.transition = 'transform 4s cubic-bezier(0.1, 0.9, 0.2, 1)';
-            s3.style.transform = `translateY(${pixelDesplazamiento}px)`;
+            const px = -120 * 30;
+            document.getElementById('strip1').style.transition = 'transform 3s cubic-bezier(0.1, 0.9, 0.2, 1)';
+            document.getElementById('strip1').style.transform = `translateY(${px}px)`;
+            
+            document.getElementById('strip2').style.transition = 'transform 3.5s cubic-bezier(0.1, 0.9, 0.2, 1)';
+            document.getElementById('strip2').style.transform = `translateY(${px}px)`;
+            
+            document.getElementById('strip3').style.transition = 'transform 4s cubic-bezier(0.1, 0.9, 0.2, 1)';
+            document.getElementById('strip3').style.transform = `translateY(${px}px)`;
 
             setTimeout(() => { isSpinning = false; }, 4000);
         }, 50);
     }
 
-    function buildStrip(elementId, listaOpciones, ganador) {
+    function buildStrip(elementId, list, winner) {
         let html = "";
-        for(let i=0; i<30; i++) {
-            html += `<div class="reel-item">${rand(listaOpciones)}</div>`;
-        }
-        html += `<div class="reel-item" style="color:#00ff88; text-shadow:0 0 10px #00ff88">${ganador}</div>`;
+        for(let i=0; i<30; i++) html += `<div class="reel-item">${rand(list)}</div>`;
+        html += `<div class="reel-item" style="color:#00ff88; text-shadow:0 0 10px #00ff88">${winner}</div>`;
         document.getElementById(elementId).innerHTML = html;
     }
 
-    // --- RESTO DE FUNCIONES (VR y POS) ---
+    // --- VR ---
     function selectLevelVR(lvl) {
         currentLevelVR = lvl;
         document.getElementById('vrTitle').innerText = "NIVEL: " + lvl.toUpperCase();
@@ -234,15 +233,30 @@
         const prefix = (tipo === 'verdad') ? "VERDAD: " : "RETO: ";
         document.getElementById('vrCard').innerText = prefix + rand(list);
     }
+
+    // --- POSICIONES (CON FOTO) ---
     function selectLevelPos(lvl) {
         currentLevelPos = lvl;
         document.getElementById('posTitle').innerText = "DIFICULTAD: " + lvl.toUpperCase();
-        document.getElementById('posCard').innerText = "Pulsa siguiente...";
+        document.getElementById('posCard').innerHTML = "<p>Pulsa siguiente...</p>";
         nav('game_pos');
     }
+
     function playPos() {
         const list = window.DATOS_POSICIONES[currentLevelPos];
-        document.getElementById('posCard').innerText = rand(list);
+        const item = rand(list);
+        
+        if(!item) return;
+
+        let html = "";
+        // Comprobar si tiene imagen
+        if(item.img && item.img.startsWith('http')) {
+            html += `<img src="${item.img}" class="pos-img" alt="Posición">`;
+        }
+        // Poner Nombre
+        html += `<div class="pos-name">${item.nombre}</div>`;
+        
+        document.getElementById('posCard').innerHTML = html;
     }
 </script>
 </body>
