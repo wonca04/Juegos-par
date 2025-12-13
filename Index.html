@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1a0b2e">
+<title>Secret Game</title>
+<style>
+    /* ESTÉTICA NEÓN Y OSCURA */
+    body { background-color: #1a0b2e; color: white; font-family: 'Courier New', sans-serif; text-align: center; margin: 0; display: flex; flex-direction: column; min-height: 100vh; }
+    
+    .screen { display: none; height: 100vh; flex-direction: column; justify-content: center; align-items: center; padding: 20px; box-sizing: border-box; }
+    .active { display: flex; }
+
+    h1 { color: #ff00de; text-shadow: 0 0 10px #ff00de; font-size: 2.5rem; margin-bottom: 30px; }
+    
+    /* BOTONES */
+    .btn {
+        background: transparent; border: 2px solid #00f7ff; color: #00f7ff;
+        padding: 15px 30px; margin: 10px; width: 80%; max-width: 300px;
+        font-size: 18px; font-weight: bold; text-transform: uppercase;
+        border-radius: 5px; cursor: pointer; transition: 0.2s;
+        box-shadow: 0 0 10px rgba(0, 247, 255, 0.2);
+    }
+    .btn:active { background: #00f7ff; color: #1a0b2e; }
+    .btn-hot { border-color: #ff0055; color: #ff0055; box-shadow: 0 0 10px rgba(255, 0, 85, 0.2); }
+    .btn-hot:active { background: #ff0055; color: white; }
+
+    /* TARJETAS DE RESULTADO */
+    .card {
+        background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 30px; border-radius: 15px; margin-bottom: 30px; width: 90%;
+        font-size: 24px; min-height: 100px; display: flex; align-items: center; justify-content: center;
+    }
+
+    /* LOGIN */
+    input { padding: 10px; font-size: 20px; text-align: center; border-radius: 5px; border: none; margin-bottom: 20px; width: 60%; }
+</style>
+</head>
+<body>
+
+    <div id="login" class="screen active">
+        <h1>🔒 ACCESO</h1>
+        <p>Introduce la clave secreta</p>
+        <input type="number" id="passInput" placeholder="PIN">
+        <button class="btn btn-hot" onclick="checkPass()">Entrar</button>
+    </div>
+
+    <div id="menu" class="screen">
+        <h1>🔥 ELEGIR 🔥</h1>
+        <button class="btn" onclick="nav('dados')">🎲 Dados</button>
+        <button class="btn btn-hot" onclick="nav('verdad')">💋 Verdad o Reto</button>
+        <button class="btn" onclick="nav('posiciones')">🧘 Posiciones</button>
+    </div>
+
+    <div id="dados" class="screen">
+        <h2 style="color:#00f7ff">DADOS</h2>
+        <div id="resDados" class="card">Tira los dados...</div>
+        <button class="btn" onclick="jugarDados()">LANZAR</button>
+        <button class="btn btn-hot" style="border:none; font-size:14px;" onclick="nav('menu')">Volver</button>
+    </div>
+
+    <div id="verdad" class="screen">
+        <h2 style="color:#ff00de">¿ATREVIDO?</h2>
+        <div id="resReto" class="card">Elige una opción</div>
+        <div style="display:flex; width:100%; justify-content:center;">
+            <button class="btn" onclick="jugarVR('verdad')">Verdad</button>
+            <button class="btn btn-hot" onclick="jugarVR('reto')">Reto</button>
+        </div>
+        <button class="btn btn-hot" style="border:none; font-size:14px;" onclick="nav('menu')">Volver</button>
+    </div>
+
+    <div id="posiciones" class="screen">
+        <h2 style="color:#00f7ff">POSICIONES</h2>
+        <div id="resPos" class="card">Generar nueva...</div>
+        <button class="btn" onclick="jugarPos()">GENERAR</button>
+        <button class="btn btn-hot" style="border:none; font-size:14px;" onclick="nav('menu')">Volver</button>
+    </div>
+
+<script>
+    // --- CONFIGURACIÓN (EDITA ESTO) ---
+    const PASSWORD = "5425"; // <--- AQUÍ ESTÁ TU NUEVA CONTRASEÑA
+
+    // BASE DE DATOS: DADOS (Puedes cambiar los textos entre comillas)
+    const acciones = ["Chupar", "Besar", "Morder", "Acariciar", "Masajear"];
+    const partes = ["Cuello", "Oreja", "Muslos", "Pecho", "Labios", "Espalda"];
+
+    // BASE DE DATOS: VERDAD O RETO
+    const verdades = [
+        "¿Qué es lo que más te gusta de mi cuerpo?",
+        "¿Cuál ha sido tu mejor sueño erótico?",
+        "¿Tienes alguna fantasía que no me hayas dicho?"
+    ];
+    const retos = [
+        "Quítate una prenda ahora mismo.",
+        "Mándame una foto picante ahora (si no estamos juntos).",
+        "Hazme un masaje de 2 minutos donde yo quiera."
+    ];
+
+    // BASE DE DATOS: POSICIONES
+    const listaPos = ["El Perrito", "Misionero", "La Cucharita", "69", "La Amazona", "De Pie"];
+
+    // --- LÓGICA DEL SISTEMA (NO TOCAR NADA ABAJO) ---
+    function checkPass() {
+        if(document.getElementById('passInput').value === PASSWORD) nav('menu');
+        else alert("Clave incorrecta 🚫");
+    }
+
+    function nav(id) {
+        document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+    }
+
+    function rand(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+    function jugarDados() { document.getElementById('resDados').innerText = rand(acciones) + " en " + rand(partes); }
+    
+    function jugarVR(tipo) {
+        if(tipo === 'verdad') document.getElementById('resReto').innerText = "VERDAD: " + rand(verdades);
+        else document.getElementById('resReto').innerText = "RETO: " + rand(retos);
+    }
+
+    function jugarPos() { document.getElementById('resPos').innerText = rand(listaPos); }
+</script>
+</body>
+</html>
+
