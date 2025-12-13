@@ -89,7 +89,6 @@ window.DATOS_POSICIONES = {
         { nombre: "Vela", img: "https://sexpositions.club/es/wp-content/uploads/sites/2/2016/02/7_1.png" },
         { nombre: "A horcajadas", img: "https://sexpositions.club/es/wp-content/uploads/sites/2/2016/02/6_1_2.png" },
         { nombre: "Gato", img: "https://sexpositions.club/es/wp-content/uploads/sites/2/2016/02/3_2_3.png" },
-        { nombre: "Posición Extra", img: "https://sub.sexpositions.club/uploads/9a6ec34011d764ce6a4f0951e042985e.jpg" }
     ],
 
     // --- NIVEL MEDIO (Reserva) ---
