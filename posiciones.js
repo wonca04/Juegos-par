@@ -1,16 +1,3 @@
-¡Perfecto! Has hecho el trabajo duro y has conseguido los enlaces buenos de las imágenes (`.png` y `.jpg`) para la gran mayoría.
-
-He procesado toda tu lista para:
-
-1. **Limpiar los nombres:** He quitado lo de "Posición sexual #490..." y las descripciones largas entre paréntesis para que se vea limpio en el móvil.
-2. **Filtrar:** He eliminado las pocas que todavía tenían el `lazy_placeholder.gif` (como la del Tango) para que no te salgan fotos rotas.
-3. **Organizar:** Como pediste, he metido **TODAS** en la categoría **`facil`**.
-
-Aquí tienes tu archivo **`posiciones.js`** definitivo con más de 70 posiciones listas para usar.
-
-Copia todo el bloque y pégalo en GitHub:
-
-```javascript
 window.DATOS_POSICIONES = {
     // --- NIVEL FÁCIL (Tu lista completa) ---
     facil: [
@@ -103,5 +90,3 @@ window.DATOS_POSICIONES = {
         { nombre: "La Carretilla", img: "https://sexpositions.club/es/wp-content/uploads/sites/2/2016/03/1_29.png" }
     ]
 };
-
-```
