@@ -13,43 +13,28 @@
     .active { display: flex; }
     
     h1 { color: #fff; text-shadow: 0 0 10px #ff0055; font-size: 2.2rem; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; }
-    h2 { font-size: 1.5rem; color: #00e5ff; margin-bottom: 20px; }
+    h2 { font-size: 1.5rem; color: #00e5ff; margin-bottom: 10px; }
     
-    /* BOTONES */
     .btn { background: #111; border: 1px solid #333; color: white; padding: 18px; margin: 8px; width: 85%; max-width: 320px; font-size: 18px; font-weight: bold; border-radius: 12px; cursor: pointer; transition: 0.2s; box-shadow: 0 4px 6px rgba(0,0,0,0.5); }
     .btn:active { transform: scale(0.98); }
     .btn-action { background: linear-gradient(45deg, #ff0055, #bf00ff); border: none; color: white; font-size: 20px; margin-top: 30px; box-shadow: 0 0 15px rgba(255, 0, 85, 0.4); }
 
-    /* ESTILOS DE LA RULETA (SLOT MACHINE) */
-    .slots-container {
-        display: flex; gap: 10px; width: 100%; max-width: 350px; justify-content: center; margin-bottom: 20px;
-    }
-    .reel-window {
-        width: 48%; height: 150px;
-        background: #1a1a1a; border: 2px solid #ff0055; border-radius: 15px;
-        overflow: hidden; /* Esto oculta lo que se sale de la caja */
-        position: relative;
-        box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
-    }
-    .reel-strip {
-        display: flex; flex-direction: column; align-items: center;
-        transition: transform 3s cubic-bezier(0.1, 0.9, 0.2, 1); /* Animación suave */
-    }
-    .reel-item {
-        height: 150px; width: 100%;
-        display: flex; align-items: center; justify-content: center;
-        font-size: 20px; font-weight: bold; text-transform: uppercase;
-        color: #fff; padding: 10px; box-sizing: border-box;
-        text-shadow: 0 2px 4px rgba(0,0,0,0.5); border-bottom: 1px solid #333;
-    }
+    /* BOTONES DE MODO DADOS */
+    .mode-container { display: flex; gap: 5px; margin-bottom: 15px; }
+    .btn-mode { padding: 8px 15px; font-size: 14px; background: #222; border: 1px solid #555; color: #aaa; border-radius: 20px; cursor: pointer; }
+    .btn-mode.selected { background: #00e5ff; color: #000; font-weight: bold; border-color: #00e5ff; box-shadow: 0 0 10px rgba(0, 229, 255, 0.5); }
 
-    /* ESTILOS DE NIVELES */
+    /* ESTILOS DE LA RULETA */
+    .slots-container { display: flex; gap: 5px; width: 100%; max-width: 380px; justify-content: center; margin-bottom: 20px; }
+    .reel-window { width: 32%; height: 120px; background: #1a1a1a; border: 2px solid #ff0055; border-radius: 10px; overflow: hidden; position: relative; box-shadow: inset 0 0 10px rgba(0,0,0,0.8); }
+    .reel-strip { display: flex; flex-direction: column; align-items: center; transition: transform 3s cubic-bezier(0.1, 0.9, 0.2, 1); }
+    .reel-item { height: 120px; width: 100%; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: bold; text-transform: uppercase; color: #fff; padding: 5px; box-sizing: border-box; text-shadow: 0 2px 4px rgba(0,0,0,0.5); border-bottom: 1px solid #333; word-wrap: break-word; }
+
+    /* ESTILOS DE NIVELES Y EXTRAS */
     .lvl-1 { border-color: #00ff88; color: #00ff88; }
     .lvl-2 { border-color: #ffaa00; color: #ffaa00; }
     .lvl-3 { border-color: #ff0055; color: #ff0055; }
     .lvl-4 { border-color: #bf00ff; color: #bf00ff; }
-
-    /* INPUTS Y TEXTOS */
     .card { background: #1a1a1a; border: 1px solid #444; padding: 30px; border-radius: 20px; margin-bottom: 20px; width: 90%; max-width: 350px; font-size: 22px; min-height: 120px; display: flex; align-items: center; justify-content: center; }
     input { padding: 15px; font-size: 24px; text-align: center; border-radius: 10px; border: 1px solid #555; background: #222; color: white; margin-bottom: 20px; width: 60%; outline: none; }
     .back-btn { background: transparent; border: none; color: #777; margin-top: 30px; text-decoration: underline; font-size: 16px; }
@@ -57,9 +42,7 @@
 </head>
 <body>
 
-    <div id="loading" class="screen active">
-        <h2>Cargando...</h2>
-    </div>
+    <div id="loading" class="screen active"><h2>Cargando...</h2></div>
 
     <div id="login" class="screen">
         <h1>🔒 SECRET APP</h1>
@@ -69,25 +52,24 @@
 
     <div id="menu" class="screen">
         <h1>🔥 MENÚ 🔥</h1>
-        <button class="btn" style="border-color:#00e5ff" onclick="nav('dados')">🎰 Ruleta Hot</button>
+        <button class="btn" style="border-color:#00e5ff" onclick="nav('dados')">🎰 Ruleta Triple</button>
         <button class="btn" style="border-color:#ff0055" onclick="nav('menu_vr')">💋 Verdad o Reto</button>
         <button class="btn" style="border-color:#bf00ff" onclick="nav('menu_pos')">🧘 Posiciones</button>
     </div>
 
     <div id="dados" class="screen">
-        <h2 style="color:#ff0055">RULETA DEL PLACER</h2>
+        <h2 style="color:#ff0055">RULETA TRIPLE</h2>
         
+        <div class="mode-container">
+            <button id="btnSuave" class="btn-mode" onclick="setMode('suave')">☁️ Suave</button>
+            <button id="btnMix" class="btn-mode selected" onclick="setMode('mix')">🔀 Mix</button>
+            <button id="btnPicante" class="btn-mode" onclick="setMode('picante')">🔥 Picante</button>
+        </div>
+
         <div class="slots-container">
-            <div class="reel-window">
-                <div id="strip1" class="reel-strip">
-                    <div class="reel-item">❓</div>
-                </div>
-            </div>
-            <div class="reel-window">
-                <div id="strip2" class="reel-strip">
-                    <div class="reel-item">❓</div>
-                </div>
-            </div>
+            <div class="reel-window"><div id="strip1" class="reel-strip"><div class="reel-item">❓</div></div></div>
+            <div class="reel-window"><div id="strip2" class="reel-strip"><div class="reel-item">❓</div></div></div>
+            <div class="reel-window" style="border-color:#00e5ff"><div id="strip3" class="reel-strip"><div class="reel-item">⏱️</div></div></div>
         </div>
 
         <button class="btn btn-action" onclick="spinRoulette()">¡GIRAR!</button>
@@ -135,15 +117,14 @@
     const PASSWORD = "5425";
     let currentLevelVR = '';
     let currentLevelPos = '';
-    let isSpinning = false; // Para evitar pulsar dos veces seguido
+    let isSpinning = false;
+    let diceMode = 'mix'; // Por defecto MIX
 
     window.onload = function() {
-        // Comprobación de seguridad
         if(window.DATOS_POSICIONES && window.DATOS_VR && window.DATOS_DADOS) {
             nav('login');
         } else {
-            // Si falla, intentamos cargar igual por si acaso
-            console.log("Aviso: Datos no detectados al inicio, intentando igual.");
+            console.log("Error cargando datos.");
             nav('login');
         }
     };
@@ -152,73 +133,96 @@
         document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
         document.getElementById(id).classList.add('active');
     }
-
     function checkPass() {
         if(document.getElementById('passInput').value === PASSWORD) nav('menu');
         else alert("Contraseña incorrecta");
     }
-
     function rand(arr) { 
-        if(!arr || arr.length === 0) return "Faltan datos";
+        if(!arr || arr.length === 0) return "?";
         return arr[Math.floor(Math.random() * arr.length)]; 
     }
 
-    // --- LÓGICA DE LA RULETA (NUEVO) ---
+    // --- LÓGICA DE DADOS CON MODOS ---
+    function setMode(mode) {
+        diceMode = mode;
+        // Actualizar visualmente los botones
+        document.querySelectorAll('.btn-mode').forEach(b => b.classList.remove('selected'));
+        if(mode === 'suave') document.getElementById('btnSuave').classList.add('selected');
+        if(mode === 'mix') document.getElementById('btnMix').classList.add('selected');
+        if(mode === 'picante') document.getElementById('btnPicante').classList.add('selected');
+    }
+
     function spinRoulette() {
-        if(isSpinning) return; // Si ya gira, no hacer nada
+        if(isSpinning) return;
         isSpinning = true;
 
-        // 1. Obtener opciones del archivo dados.js
-        const listaAcciones = window.DATOS_DADOS.acciones;
-        const listaPartes = window.DATOS_DADOS.partes;
+        // 1. Obtener las listas base
+        const d = window.DATOS_DADOS;
+        let poolAcciones = [];
+        let poolPartes = [];
+        let poolTiempos = [];
 
-        // 2. Elegir ganadores
-        const ganadorAccion = rand(listaAcciones);
-        const ganadorParte = rand(listaPartes);
+        // 2. Filtrar según el modo elegido
+        if (diceMode === 'suave') {
+            poolAcciones = d.suave.acciones;
+            poolPartes = d.suave.partes;
+            poolTiempos = d.suave.tiempos;
+        } else if (diceMode === 'picante') {
+            poolAcciones = d.picante.acciones;
+            poolPartes = d.picante.partes;
+            poolTiempos = d.picante.tiempos;
+        } else {
+            // MODO MIX: Juntamos todo
+            poolAcciones = d.suave.acciones.concat(d.picante.acciones);
+            poolPartes = d.suave.partes.concat(d.picante.partes);
+            poolTiempos = d.suave.tiempos.concat(d.picante.tiempos);
+        }
 
-        // 3. Generar tiras largas para simular giro
-        // Creamos una lista HTML con 30 items aleatorios + el ganador al final
-        buildStrip('strip1', listaAcciones, ganadorAccion);
-        buildStrip('strip2', listaPartes, ganadorParte);
+        // 3. Elegir ganadores
+        const gAccion = rand(poolAcciones);
+        const gParte = rand(poolPartes);
+        const gTiempo = rand(poolTiempos);
 
-        // 4. Resetear posición (truco visual)
-        document.getElementById('strip1').style.transition = 'none';
-        document.getElementById('strip1').style.transform = 'translateY(0)';
-        document.getElementById('strip2').style.transition = 'none';
-        document.getElementById('strip2').style.transform = 'translateY(0)';
+        // 4. Crear tiras
+        buildStrip('strip1', poolAcciones, gAccion);
+        buildStrip('strip2', poolPartes, gParte);
+        buildStrip('strip3', poolTiempos, gTiempo);
 
-        // 5. Forzar el navegador a "darse cuenta" del reset antes de animar
+        // 5. Animación
+        ['strip1', 'strip2', 'strip3'].forEach(id => {
+            const el = document.getElementById(id);
+            el.style.transition = 'none';
+            el.style.transform = 'translateY(0)';
+        });
+
         setTimeout(() => {
-            // Aplicar animación hacia abajo (al final de la tira)
-            // Calculamos: -150px (altura item) * 30 items
-            const pixelDesplazamiento = -150 * 30; 
-            
+            const pixelDesplazamiento = -120 * 30;
             const s1 = document.getElementById('strip1');
             s1.style.transition = 'transform 3s cubic-bezier(0.1, 0.9, 0.2, 1)';
             s1.style.transform = `translateY(${pixelDesplazamiento}px)`;
 
             const s2 = document.getElementById('strip2');
-            s2.style.transition = 'transform 3.5s cubic-bezier(0.1, 0.9, 0.2, 1)'; // Un poco más lento para efecto
+            s2.style.transition = 'transform 3.5s cubic-bezier(0.1, 0.9, 0.2, 1)';
             s2.style.transform = `translateY(${pixelDesplazamiento}px)`;
 
-            // Liberar botón cuando termine
-            setTimeout(() => { isSpinning = false; }, 3500);
+            const s3 = document.getElementById('strip3');
+            s3.style.transition = 'transform 4s cubic-bezier(0.1, 0.9, 0.2, 1)';
+            s3.style.transform = `translateY(${pixelDesplazamiento}px)`;
+
+            setTimeout(() => { isSpinning = false; }, 4000);
         }, 50);
     }
 
     function buildStrip(elementId, listaOpciones, ganador) {
         let html = "";
-        // Añadir 30 opciones aleatorias de relleno
         for(let i=0; i<30; i++) {
             html += `<div class="reel-item">${rand(listaOpciones)}</div>`;
         }
-        // Añadir el ganador al final (posición 31)
         html += `<div class="reel-item" style="color:#00ff88; text-shadow:0 0 10px #00ff88">${ganador}</div>`;
-        
         document.getElementById(elementId).innerHTML = html;
     }
 
-    // --- LÓGICA VR y POSICIONES (IGUAL QUE ANTES) ---
+    // --- RESTO DE FUNCIONES (VR y POS) ---
     function selectLevelVR(lvl) {
         currentLevelVR = lvl;
         document.getElementById('vrTitle').innerText = "NIVEL: " + lvl.toUpperCase();
