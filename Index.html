@@ -4,125 +4,154 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="theme-color" content="#1a0b2e">
-<title>Secret Game</title>
+<meta name="theme-color" content="#000000">
+<title>Secret App</title>
 <style>
-    /* ESTÉTICA NEÓN Y OSCURA */
-    body { background-color: #1a0b2e; color: white; font-family: 'Courier New', sans-serif; text-align: center; margin: 0; display: flex; flex-direction: column; min-height: 100vh; }
-    
-    .screen { display: none; height: 100vh; flex-direction: column; justify-content: center; align-items: center; padding: 20px; box-sizing: border-box; }
+    /* ESTILOS (Igual que antes pero optimizados) */
+    body { background-color: #000; color: white; font-family: 'Arial', sans-serif; text-align: center; margin: 0; display: flex; flex-direction: column; min-height: 100vh; overflow-x: hidden; }
+    .screen { display: none; height: 100vh; flex-direction: column; justify-content: center; align-items: center; padding: 20px; box-sizing: border-box; animation: fadeIn 0.3s; }
     .active { display: flex; }
-
-    h1 { color: #ff00de; text-shadow: 0 0 10px #ff00de; font-size: 2.5rem; margin-bottom: 30px; }
+    h1 { color: #fff; text-shadow: 0 0 10px #ff0055; font-size: 2.2rem; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; }
+    h2 { font-size: 1.5rem; color: #00e5ff; margin-bottom: 20px; }
+    .btn { background: #111; border: 1px solid #333; color: white; padding: 18px; margin: 8px; width: 85%; max-width: 320px; font-size: 18px; font-weight: bold; border-radius: 12px; cursor: pointer; transition: 0.2s; box-shadow: 0 4px 6px rgba(0,0,0,0.5); }
+    .btn:active { transform: scale(0.98); }
+    /* Colores Niveles */
+    .lvl-1 { border-color: #00ff88; color: #00ff88; }
+    .lvl-2 { border-color: #ffaa00; color: #ffaa00; }
+    .lvl-3 { border-color: #ff0055; color: #ff0055; }
+    .lvl-4 { border-color: #bf00ff; color: #bf00ff; box-shadow: 0 0 15px rgba(191, 0, 255, 0.4); }
     
-    /* BOTONES */
-    .btn {
-        background: transparent; border: 2px solid #00f7ff; color: #00f7ff;
-        padding: 15px 30px; margin: 10px; width: 80%; max-width: 300px;
-        font-size: 18px; font-weight: bold; text-transform: uppercase;
-        border-radius: 5px; cursor: pointer; transition: 0.2s;
-        box-shadow: 0 0 10px rgba(0, 247, 255, 0.2);
-    }
-    .btn:active { background: #00f7ff; color: #1a0b2e; }
-    .btn-hot { border-color: #ff0055; color: #ff0055; box-shadow: 0 0 10px rgba(255, 0, 85, 0.2); }
-    .btn-hot:active { background: #ff0055; color: white; }
-
-    /* TARJETAS DE RESULTADO */
-    .card {
-        background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.2);
-        padding: 30px; border-radius: 15px; margin-bottom: 30px; width: 90%;
-        font-size: 24px; min-height: 100px; display: flex; align-items: center; justify-content: center;
-    }
-
-    /* LOGIN */
-    input { padding: 10px; font-size: 20px; text-align: center; border-radius: 5px; border: none; margin-bottom: 20px; width: 60%; }
+    .btn-action { background: linear-gradient(45deg, #ff0055, #bf00ff); border: none; color: white; font-size: 20px; margin-top: 20px; }
+    .card { background: #1a1a1a; border: 1px solid #444; padding: 30px; border-radius: 20px; margin-bottom: 20px; width: 90%; max-width: 350px; font-size: 22px; line-height: 1.4; min-height: 120px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    input { padding: 15px; font-size: 24px; text-align: center; border-radius: 10px; border: 1px solid #555; background: #222; color: white; margin-bottom: 20px; width: 60%; outline: none; }
+    .back-btn { background: transparent; border: none; color: #777; margin-top: 30px; text-decoration: underline; font-size: 16px; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 </style>
 </head>
 <body>
 
-    <div id="login" class="screen active">
-        <h1>🔒 ACCESO</h1>
-        <p>Introduce la clave secreta</p>
+    <div id="loading" class="screen active">
+        <h2>Cargando...</h2>
+        <p>Leyendo tus archivos...</p>
+    </div>
+
+    <div id="login" class="screen">
+        <h1>🔒 SECRET APP</h1>
         <input type="number" id="passInput" placeholder="PIN">
-        <button class="btn btn-hot" onclick="checkPass()">Entrar</button>
+        <button class="btn btn-action" onclick="checkPass()">ENTRAR</button>
     </div>
 
     <div id="menu" class="screen">
-        <h1>🔥 ELEGIR 🔥</h1>
-        <button class="btn" onclick="nav('dados')">🎲 Dados</button>
-        <button class="btn btn-hot" onclick="nav('verdad')">💋 Verdad o Reto</button>
-        <button class="btn" onclick="nav('posiciones')">🧘 Posiciones</button>
+        <h1>🔥 MENÚ 🔥</h1>
+        <button class="btn" style="border-color:#00e5ff" onclick="nav('dados')">🎲 Dados</button>
+        <button class="btn" style="border-color:#ff0055" onclick="nav('menu_vr')">💋 Verdad o Reto</button>
+        <button class="btn" style="border-color:#bf00ff" onclick="nav('menu_pos')">🧘 Posiciones</button>
+    </div>
+
+    <div id="menu_vr" class="screen">
+        <h2>Elige Intensidad</h2>
+        <button class="btn lvl-1" onclick="selectLevelVR('suave')">☁️ Suave</button>
+        <button class="btn lvl-2" onclick="selectLevelVR('hot')">🔥 Hot</button>
+        <button class="btn lvl-3" onclick="selectLevelVR('duro')">😈 Duro</button>
+        <button class="btn lvl-4" onclick="selectLevelVR('extremo')">💀 Extremo</button>
+        <button class="back-btn" onclick="nav('menu')">Volver</button>
+    </div>
+
+    <div id="game_vr" class="screen">
+        <h2 id="vrTitle">NIVEL</h2>
+        <div id="vrCard" class="card">Elige...</div>
+        <div style="display:flex; width:100%; justify-content:center; gap:10px;">
+            <button class="btn" style="border-color:#00e5ff; width:45%" onclick="playVR('verdad')">Verdad</button>
+            <button class="btn" style="border-color:#ff0055; width:45%" onclick="playVR('reto')">Reto</button>
+        </div>
+        <button class="back-btn" onclick="nav('menu_vr')">Cambiar Nivel</button>
+    </div>
+
+    <div id="menu_pos" class="screen">
+        <h2>Dificultad</h2>
+        <button class="btn lvl-1" onclick="selectLevelPos('facil')">🟢 Fácil</button>
+        <button class="btn lvl-2" onclick="selectLevelPos('medio')">🟠 Medio</button>
+        <button class="btn lvl-3" onclick="selectLevelPos('dificil')">🔴 Difícil</button>
+        <button class="btn lvl-4" onclick="selectLevelPos('extremo')">🟣 Extremo</button>
+        <button class="back-btn" onclick="nav('menu')">Volver</button>
+    </div>
+
+    <div id="game_pos" class="screen">
+        <h2 id="posTitle">POSICIÓN</h2>
+        <div id="posCard" class="card">Pulsa siguiente...</div>
+        <button class="btn btn-action" onclick="playPos()">SIGUIENTE</button>
+        <button class="back-btn" onclick="nav('menu_pos')">Cambiar</button>
     </div>
 
     <div id="dados" class="screen">
-        <h2 style="color:#00f7ff">DADOS</h2>
-        <div id="resDados" class="card">Tira los dados...</div>
-        <button class="btn" onclick="jugarDados()">LANZAR</button>
-        <button class="btn btn-hot" style="border:none; font-size:14px;" onclick="nav('menu')">Volver</button>
+        <h2>🎲 DADOS</h2>
+        <div id="dadosCard" class="card">Tira los dados</div>
+        <button class="btn btn-action" onclick="playDados()">LANZAR</button>
+        <button class="back-btn" onclick="nav('menu')">Volver</button>
     </div>
 
-    <div id="verdad" class="screen">
-        <h2 style="color:#ff00de">¿ATREVIDO?</h2>
-        <div id="resReto" class="card">Elige una opción</div>
-        <div style="display:flex; width:100%; justify-content:center;">
-            <button class="btn" onclick="jugarVR('verdad')">Verdad</button>
-            <button class="btn btn-hot" onclick="jugarVR('reto')">Reto</button>
-        </div>
-        <button class="btn btn-hot" style="border:none; font-size:14px;" onclick="nav('menu')">Volver</button>
-    </div>
-
-    <div id="posiciones" class="screen">
-        <h2 style="color:#00f7ff">POSICIONES</h2>
-        <div id="resPos" class="card">Generar nueva...</div>
-        <button class="btn" onclick="jugarPos()">GENERAR</button>
-        <button class="btn btn-hot" style="border:none; font-size:14px;" onclick="nav('menu')">Volver</button>
-    </div>
+    <script src="posiciones.js"></script>
+    <script src="preguntas.js"></script>
+    <script src="dados.js"></script>
 
 <script>
-    // --- CONFIGURACIÓN (EDITA ESTO) ---
-    const PASSWORD = "5425"; // <--- AQUÍ ESTÁ TU NUEVA CONTRASEÑA
+    const PASSWORD = "5425"; // TU CONTRASEÑA
+    let currentLevelVR = '';
+    let currentLevelPos = '';
 
-    // BASE DE DATOS: DADOS (Puedes cambiar los textos entre comillas)
-    const acciones = ["Chupar", "Besar", "Morder", "Acariciar", "Masajear"];
-    const partes = ["Cuello", "Oreja", "Muslos", "Pecho", "Labios", "Espalda"];
-
-    // BASE DE DATOS: VERDAD O RETO
-    const verdades = [
-        "¿Qué es lo que más te gusta de mi cuerpo?",
-        "¿Cuál ha sido tu mejor sueño erótico?",
-        "¿Tienes alguna fantasía que no me hayas dicho?"
-    ];
-    const retos = [
-        "Quítate una prenda ahora mismo.",
-        "Mándame una foto picante ahora (si no estamos juntos).",
-        "Hazme un masaje de 2 minutos donde yo quiera."
-    ];
-
-    // BASE DE DATOS: POSICIONES
-    const listaPos = ["El Perrito", "Misionero", "La Cucharita", "69", "La Amazona", "De Pie"];
-
-    // --- LÓGICA DEL SISTEMA (NO TOCAR NADA ABAJO) ---
-    function checkPass() {
-        if(document.getElementById('passInput').value === PASSWORD) nav('menu');
-        else alert("Clave incorrecta 🚫");
-    }
+    // VERIFICAR QUE TODO CARGÓ
+    window.onload = function() {
+        if(window.DATOS_POSICIONES && window.DATOS_VR && window.DATOS_DADOS) {
+            nav('login');
+        } else {
+            alert("⚠️ ERROR: No se encuentran los archivos de datos (posiciones.js, preguntas.js o dados.js). Revisa que los creaste en GitHub.");
+        }
+    };
 
     function nav(id) {
         document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
         document.getElementById(id).classList.add('active');
     }
 
-    function rand(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
-
-    function jugarDados() { document.getElementById('resDados').innerText = rand(acciones) + " en " + rand(partes); }
-    
-    function jugarVR(tipo) {
-        if(tipo === 'verdad') document.getElementById('resReto').innerText = "VERDAD: " + rand(verdades);
-        else document.getElementById('resReto').innerText = "RETO: " + rand(retos);
+    function checkPass() {
+        if(document.getElementById('passInput').value === PASSWORD) nav('menu');
+        else alert("Contraseña incorrecta");
     }
 
-    function jugarPos() { document.getElementById('resPos').innerText = rand(listaPos); }
+    function rand(arr) { 
+        if(!arr || arr.length === 0) return "¡Lista vacía!";
+        return arr[Math.floor(Math.random() * arr.length)]; 
+    }
+
+    // LÓGICA DADOS
+    function playDados() {
+        document.getElementById('dadosCard').innerText = rand(window.DATOS_DADOS.acciones) + " " + rand(window.DATOS_DADOS.partes);
+    }
+
+    // LÓGICA VR
+    function selectLevelVR(lvl) {
+        currentLevelVR = lvl;
+        document.getElementById('vrTitle').innerText = "NIVEL: " + lvl.toUpperCase();
+        document.getElementById('vrCard').innerText = "¿Verdad o Reto?";
+        nav('game_vr');
+    }
+    function playVR(tipo) {
+        const list = window.DATOS_VR[currentLevelVR][tipo];
+        const prefix = (tipo === 'verdad') ? "VERDAD: " : "RETO: ";
+        document.getElementById('vrCard').innerText = prefix + rand(list);
+    }
+
+    // LÓGICA POSICIONES
+    function selectLevelPos(lvl) {
+        currentLevelPos = lvl;
+        document.getElementById('posTitle').innerText = "DIFICULTAD: " + lvl.toUpperCase();
+        document.getElementById('posCard').innerText = "Pulsa siguiente...";
+        nav('game_pos');
+    }
+    function playPos() {
+        const list = window.DATOS_POSICIONES[currentLevelPos];
+        document.getElementById('posCard').innerText = rand(list);
+    }
 </script>
 </body>
 </html>
-
