@@ -33,18 +33,24 @@ window.DATOS_VR = {
             // --- JUEGOS DE LA APP (ALTA PROBABILIDAD) ---
             "APP: Ve a la RULETA, tira en 'Suave' y cumple lo que salga.",
             "APP: Ve a la RULETA, tira en 'Suave' y cumple lo que salga.",
+            "APP: Ve a la RULETA, tira en 'Suave' y cumple lo que salga.", 
             "APP: Ve a POSICIONES (Fácil), busca una que te guste y dímela al oído.",
             "APP: Ve a POSICIONES (Fácil) e imitad esa postura con ropa ahora mismo.",
             "APP: Tira la RULETA. Si sale 'Besar', te quitas una prenda.",
             "APP: Ve a la RULETA. Tienes que cumplir la acción durante 1 minuto.",
             
-            // --- ROPA FUERA ---
+            // --- ROPA FUERA (ALTA PROBABILIDAD) ---
             "¡QUÍTATE UNA PRENDA! (Sin rechistar).",
             "¡QUÍTATE UNA PRENDA! (Sin rechistar).",
+            "¡QUÍTATE UNA PRENDA! (La que yo elija).", 
             "ELIGE: Ve a la RULETA y cumple O quítate una prenda.",
             "ELIGE: Bésame el cuello 1 min O quítate una prenda.",
             "¡QUÍTATE LOS ZAPATOS O CALCETINES!",
             
+            // --- META-RETOS (DINÁMICA DE JUEGO) ---
+            "JUEGO: En tu próximo turno estás OBLIGADO/A a elegir RETO.",
+            "JUEGO: Juega otra vez inmediatamente. Elige Verdad o Reto ahora.",
+
             // --- RETOS NORMALES ---
             "Dame un beso de película durante 1 minuto.",
             "Hazme un masaje en los hombros durante 2 minutos.",
@@ -124,23 +130,31 @@ window.DATOS_VR = {
         reto: [
             // --- JUEGOS DE LA APP (MUY FRECUENTES) ---
             "APP: Ve a la RULETA (Picante) y haz EXACTAMENTE lo que diga.",
+            "APP: Ve a la RULETA (Picante) y haz EXACTAMENTE lo que diga.", 
             "APP: Ve a la RULETA (Picante). Si sale tiempo > 30s, te quitas ropa.",
             "APP: Ve a POSICIONES (Medio). La primera que salga, la hacéis 2 min.",
+            "APP: Ve a POSICIONES (Medio). La primera que salga, la hacéis 2 min.", 
             "APP: Ve a POSICIONES (Medio). Imitad la postura desnudos.",
             "APP: Tira la RULETA 3 veces y elige tu combinación favorita para hacérmela.",
             "APP: Ve a la RULETA (Mix). Si sale una zona íntima, ¡premio! Toca.",
             "APP: Ve a POSICIONES. Busca una que nunca hayamos hecho y probadla.",
             "APP: Tira la RULETA. Lo que salga se hace DOBLE de tiempo.",
 
-            // --- ROPA FUERA Y ELECCIONES ---
+            // --- ROPA FUERA Y ELECCIONES (ALTA FRECUENCIA) ---
             "¡QUÍTATE LA ROPA INTERIOR Y DÁMELA!",
             "¡QUÍTATE LA ROPA INTERIOR Y DÁMELA!",
+            "¡QUÍTATE LA ROPA INTERIOR Y DÁMELA!", 
             "ELIGE: O me haces oral 1 min O te quitas la ropa interior.",
             "ELIGE: O tiras la RULETA (Picante) O te quitas dos prendas.",
             "ELIGE: O vamos a POSICIONES (Medio) O te quitas los pantalones.",
             "¡PRENDA FUERA! Tú eliges cuál, pero tiene que ser sexy.",
+            "¡PRENDA FUERA! Tú eliges cuál, pero tiene que ser sexy.", 
             "ELIGE: O lames mis pezones O te quitas la camiseta.",
             "ELIGE: O me haces una paja/dedos O te quitas la ropa interior.",
+
+            // --- META-RETOS ---
+            "JUEGO: Haz DOS retos seguidos. Saca otra tarjeta de reto ahora mismo.",
+            "JUEGO: Castigo. Quítate una prenda y tira la Ruleta Picante.",
 
             // --- RETOS NORMALES ---
             "Bésame desde el cuello hasta el ombligo.",
@@ -184,13 +198,13 @@ window.DATOS_VR = {
             "Tócate mientras te beso el cuello.",
             "Quítame la ropa interior sin usar las manos.",
             "Déjame ver tu historial de búsqueda del móvil.",
-            "Simula un orgasmo ruidoso.",
+            "Simula un orgasmo ruidoso (Si no se puede hacer ruido: hazlo gesticulando en absoluto silencio).",
             "Bésame donde más te apetezca ahora mismo."
         ]
     },
 
     // ============================================================
-    // NIVEL 3: DURO (Acción real + App obligatoria)
+    // NIVEL 3: DURO (Acción real + App obligatoria + Calentamiento)
     // ============================================================
     duro: {
         verdad: [
@@ -198,64 +212,68 @@ window.DATOS_VR = {
             "¿Cuál es tu fantasía más sucia que no hemos hecho?",
             "¿Te gusta que te ahogue un poco?",
             "¿Has pensado en follar con alguien más estando conmigo?",
-            "¿Qué opinas de tragar semen?",
             "¿Te gustaría hacerlo en un sitio público ahora?",
             "¿Qué es lo más guarro que has hecho nunca?",
             "¿Te gusta que te escupan?",
             "¿Te gustaría usar un dildo o vibrador juntos?",
-            "¿Cuál es la posición que te hace llegar más profundo?",
+            "¿Cuál es la posición que más te estimula sin llegar al final?", 
             "¿Te gusta el sexo rudo o con amor?",
             "¿Te gustaría que te azotara fuerte?",
             "¿Has tenido sueños húmedos conmigo?",
-            "¿Qué frase sucia te gustaría que te gritara al correrte?",
-            "¿Te gusta el 'creampie' (acabar dentro)?",
+            "¿Qué frase sucia te gustaría que te gritara al oído mientras te provoco?", 
             "¿Te excita el riesgo de que nos pillen?",
             "¿Te gustaría probar el sexo telefónico?",
             "¿Te pone ver porno de alguna categoría rara?",
             "¿Qué te gustaría que te obligara a hacer?",
             "¿Te gusta que te tapen la boca durante el sexo?",
-            "¿Cuál es tu récord de orgasmos en una noche?",
             "¿Te gustaría que te vendara y usara juguetes contigo?",
             "¿Qué opinas del sexo durante la menstruación (real)?",
             "¿Te gustaría follar frente a una ventana abierta?"
         ],
         reto: [
-            // --- JUEGOS DE LA APP (HARDCORE) ---
+            // --- JUEGOS DE LA APP (HARDCORE - FRECUENCIA ALTA) ---
             "APP: Ve a POSICIONES (Difícil). Tienes que hacer esa postura 5 MINUTOS.",
-            "APP: Ve a POSICIONES (Difícil). Inténtala hasta que uno se canse.",
+            "APP: Ve a POSICIONES (Difícil). Tienes que hacer esa postura 5 MINUTOS.", 
+            "APP: Ve a POSICIONES (Difícil). Inténtala hasta que uno no aguante más el calentón.",
             "APP: Ve a la RULETA (Picante). Lo que salga es LEY y no puedes negarte.",
+            "APP: Ve a la RULETA (Picante). Lo que salga es LEY y no puedes negarte.", 
             "APP: Ve a la RULETA. Tira 2 veces y combina las dos acciones.",
-            "APP: Ve a POSICIONES (Medio). Yo me tumbo y tú haces todo el trabajo en esa postura.",
-            "APP: Tira la RULETA. Si sale tiempo 'Sin límite' o 'Hasta cansar', prepárate.",
-            "APP: Ve a POSICIONES (Fácil). Hazla, pero muy muy rápido.",
+            "APP: Ve a POSICIONES (Medio). Yo me tumbo y tú haces todo el trabajo.",
+            "APP: Tira la RULETA. Si sale tiempo, lo duplicas.",
+            "APP: Ve a POSICIONES (Fácil). Hazla, pero con mucha intensidad y rozando solo.",
             
             // --- DESNUDOS Y ELECCIONES ---
             "¡DESNÚDATE COMPLETAMENTE AHORA MISMO!",
             "¡DESNÚDATE COMPLETAMENTE AHORA MISMO!",
+            "¡DESNÚDATE COMPLETAMENTE AHORA MISMO!", 
             "ELIGE: O vas a la RULETA (Picante) O te quedas desnudo/a.",
             "ELIGE: O pruebas una POSICIÓN (Difícil) O te dejas atar.",
             "ELIGE: O oral profundo 3 min O te quedas completamente desnudo/a.",
-            "ELIGE: O 10 azotes fuertes O te quitas toda la ropa.",
+            "ELIGE: O 10 nalgadas fuertes O te quitas toda la ropa.",
             "¡FUERA TODO! Quédate como Dios te trajo al mundo.",
 
-            // --- RETOS NORMALES ---
-            "Hazme sexo oral hasta que yo diga basta (mínimo 3 min).",
+            // --- META-RETOS ---
+            "JUEGO: Tus próximos 2 turnos serán OBLIGATORIAMENTE Reto.",
+            "JUEGO: Saca un reto ahora mismo y luego tira la ruleta picante.",
+
+            // --- RETOS NORMALES (ENFOCADOS EN CALENTAR Y CONDICIONALES DE RUIDO) ---
+            "Hazme sexo oral profundo (mínimo 3 min) pero PARA en cuanto note que me acerco.",
             "Ponte en posición de perrito y deja que te azote 5 veces.",
             "Mastúrbame con la boca llena de agua (o bebida) sin tragar.",
-            "Déjame atarte las manos a la cama/silla.",
-            "Follamos en la posición que YO quiera durante 5 minutos.",
+            "Déjame atar tus manos a la cama/silla con lo que tengamos a mano.",
+            "Follamos en la posición que YO quiera durante 5 minutos, parando si nos acercamos demasiado.",
             "Lámeme el cuerpo entero, incluidos los pies.",
-            "69 durante 3 minutos cronometrados.",
+            "69 durante 3 minutos cronometrados. Prohibido llegar al final.",
             "Introdúcete un dedo (o deja que yo lo haga) y chúpalo después.",
             "Hazme un baile desnudo y tócate.",
             "Ten sexo conmigo sin usar las manos (solo penetración y cadera).",
             "Ponte un vibrador (si hay) o mastúrbate mientras me haces oral.",
-            "Déjame correrte en la cara o pecho.",
-            "Sexo rápido: 2 minutos a máxima velocidad.",
+            "Introduce solo la puntita durante 2 minutos enteros. Prohibido empujar más.", 
+            "Sexo rápido: 2 minutos a máxima velocidad, luego paramos de golpe.",
             "Azótame con un cinturón o cable (suave, luego sube intensidad).",
             "Véndame los ojos y úsame como quieras 5 minutos.",
             "Tócame con los pies en mis partes íntimas.",
-            "Grita 'Soy tu puta/o' mientras lo hacemos.",
+            "Grita 'Soy tu puta/o' mientras lo hacemos. (Si hay gente y no puedes: susúrramelo muy guarro al oído y saca OTRA tarjeta de reto extra).",
             "Hazme una paja usando saliva y mirándome.",
             "Quédate quieto/a y deja que te excite sin tocarme (tortura).",
             "Lame mis genitales haciendo el abecedario con la lengua.",
@@ -268,24 +286,21 @@ window.DATOS_VR = {
             "Déjame dominarte por completo los próximos 10 minutos.",
             "Hazme garganta profunda (lo que puedas) 10 veces.",
             "Ten sexo conmigo mirándonos al espejo.",
-            "Ponte a 4 patas y deja que te coma el culo (rimming) si quieres.",
-            "Haz que me venga usando solo la boca.",
+            "Mastúrbame mirándome a los ojos y para justo cuando empiece a jadear fuerte.", 
             "Mastúrbate hasta el borde del orgasmo y para (Edging).",
             "Déjame grabarte haciendo algo guarro (luego se borra).",
             "Follamos en el suelo (alfombra o duro).",
             "Chupa mis bolas (o clítoris) succionando fuerte.",
-            "Tócate y luege pásame los dedos por la boca.",
+            "Tócate y luego pásame los dedos por la boca.",
             "Sexo con la luz del móvil (linterna) iluminando los genitales.",
-            "Hazme un masaje prostático (si chico) o punto G (si chica).",
-            "Inmovilízame y hazme lo que quieras.",
-            "Haz ruido, gime muy fuerte, que nos oigan los vecinos.",
-            "Acaba dentro (o deja que acabe dentro) si es seguro.",
+            "Inmovilízame usando las esposas (o cuerda) y hazme lo que quieras.",
+            "Haz ruido, gime muy fuerte, que nos oigan los vecinos. (Si hay gente en casa: prohibido hacer el más mínimo ruido, si se escapa un gemido te quitas una prenda y sacas otro reto).",
             "Susurra guarradas muy sucias mientras me penetras/te penetro."
         ]
     },
 
     // ============================================================
-    // NIVEL 4: EXTREMO (El juego final - Todo vale)
+    // NIVEL 4: EXTREMO (El juego final - Límite sin acabar)
     // ============================================================
     extremo: {
         verdad: [
@@ -295,7 +310,7 @@ window.DATOS_VR = {
             "¿Has pensado en compartirme con alguien?",
             "¿Te gusta el dolor mezclado con placer?",
             "¿Te excita la idea de ser forzado/a (rol)?",
-            "¿Qué objeto de la casa te meterías por la vagina/boca?",
+            "¿Qué objeto de la casa te meterías por la boca?", 
             "¿Te gustaría que te orinara encima (lluvia dorada)?",
             "¿Te pone la asfixia erótica?",
             "¿Te gustaría ser humillado/a sexualmente?",
@@ -311,32 +326,39 @@ window.DATOS_VR = {
             "¿Te excita llorar o que llore durante el sexo?"
         ],
         reto: [
-            // --- APP EXTREMA ---
-            "APP: Ve a POSICIONES (Difícil). Esa postura es OBLIGATORIA hasta el orgasmo.",
-            "APP: Tira la RULETA hasta que salga 'Azotar' y hazlo x3.",
+            // --- APP EXTREMA (FRECUENCIA ALTÍSIMA) ---
+            "APP: Ve a POSICIONES (Difícil). Esa postura es OBLIGATORIA hasta que no podáis soportar más las ganas (prohibido acabar).", 
+            "APP: Ve a POSICIONES (Difícil). Esa postura es OBLIGATORIA hasta que no podáis soportar más las ganas.", 
+            "APP: Tira la RULETA hasta que salga 'Azotar' (o similar intenso) y hazlo x3.",
+            "APP: Tira la RULETA hasta que salga algo intenso y hazlo x3.", 
             "APP: Ve a DADOS. Cumple 3 tiradas seguidas sin descanso.",
+            "APP: Ve a DADOS. Cumple 3 tiradas seguidas sin descanso.", 
             "APP: Ve a POSICIONES. Busca una imposible y trata de hacerla (Risas o Placer).",
             
             // --- DESNUDOS Y CASTIGOS ---
             "¡DESNUDO INTEGRAL Y PERMANENTE!",
+            "¡DESNUDO INTEGRAL Y PERMANENTE!", 
             "ELIGE: O collar de perro y correa O te desnudas.",
             "ELIGE: O aguantas el dolor que yo quiera O te desnudas.",
             "ELIGE: O vas a la RULETA (Picante) O te quedas desnudo/a.",
             "¡FUERA ROPA! Eres mi juguete ahora.",
             
-            // --- RETOS EXTREMOS ---
+            // --- META-RETOS EXTREMOS ---
+            "JUEGO: A partir de este momento, tienes PROHIBIDO elegir Verdad el resto del juego.",
+            "JUEGO: Haz tres retos seguidos. Tu voluntad es mía ahora.",
+
+            // --- RETOS EXTREMOS (EDGING Y PROVOCACIÓN) ---
             "Soy tu DUEÑO/A por 15 minutos. Harás todo lo que ordene.",
             "Ponte una mordaza (o prenda en la boca) y déjate follar.",
-            "Atadura completa: Manos y pies a la cama. Yo decido qué pasa.",
+            "Atadura completa: Usa las esposas para inmovilizarme en la cama. Tú decides qué pasa.",
             "Castigo: 20 azotes fuertes en el culo. Cuéntalos en voz alta.",
             "Sexo con los ojos vendados y manos atadas (Privación sensorial).",
-            "Garganta profunda hasta que tengas arcadas 3 veces.",
-            "Te prohíbo correrte hasta que yo te dé permiso explícito.",
+            "Garganta profunda usando un Halls negro en la boca hasta que tengas arcadas 3 veces.",
+            "Te prohíbo correrte hasta que yo te dé permiso explícito (ni hoy ni mañana si quiero).",
             "Usa una pinza de la ropa en tus pezones (si aguantas).",
-            "Trágatelo todo (o límpiame con la lengua si acabo fuera).",
             "Roleplay: Eres una prostituta/o y yo un cliente rudo.",
             "Déjame abofetearte suavemente con mi pene (o pechos) en la cara.",
-            "Ponte a 4 patas y ladra como un perro mientras te toco.",
+            "Ponte a 4 patas y ladra como un perro mientras te toco. (Si hay compañeros: imita a un perro sumiso en absoluto silencio, si haces ruido sacas 2 retos de castigo).",
             "Bésame los pies y chupa los dedos uno a uno con devoción.",
             "Ponte hielo en los genitales y aguanta hasta que se derrita.",
             "Hazme un 'Face-sitting' (siéntate en mi cara) hasta que casi me asfixie.",
@@ -344,30 +366,30 @@ window.DATOS_VR = {
             "Introdúcete el objeto que yo elija (seguro) en la vagina.",
             "Mantén la boca abierta y deja que escupa dentro.",
             "Hazme un masaje rudo, clavando dedos y uñas.",
-            "Mastúrbate y cuando estés a punto, PARA. Repite 3 veces.",
+            "Mastúrbate y cuando estés a punto, PARA. Repite 3 veces. (Edging Extremo)",
             "Déjame escribirte 'PROPIEDAD DE [MI NOMBRE]' en el cuerpo.",
-            "Pon tu cabeza entre mis piernas y no salgas hasta que me corra.",
+            "Pon tu cabeza entre mis piernas, métete un Halls negro en la boca y hazme oral. Solo puedes parar si te lo suplico (pero no me dejes llegar al final).", 
             "Juego de la asfixia (con cuidado, manos en el cuello).",
             "Te voy a ignorar 5 minutos. Intenta excitarme sin tocar mis genitales.",
-            "Orgasmo arruinado: Cuando vayas a correrte, paro y te dejo con las ganas.",
+            "Tortura de la punta: Penetración solo con la cabeza/punta. No puedes moverte durante 3 minutos.", 
             "Bebe agua de un plato en el suelo como un animal.",
             "Ponte en posición de sumisión y pide permiso para tocarme.",
-            "Yo elijo un vídeo porno y recreamos la escena exacta.",
+            "Chupa y estimula mis genitales a fondo usando un Halls negro (el contraste de frío y calor es obligatorio).",
             "Usa cera de vela (baja temperatura/especial) en mi cuerpo.",
             "Muerde fuerte hasta dejar marca (chupetón o dientes).",
             "Sexo oral en la posición '69' de pie (o intentarlo).",
             "No puedes usar las manos para nada durante los próximos 10 min.",
-            "Te ato las manos a la espalda y tienes que hacerme correr con la boca.",
-            "Insúltame y dime cosas sucias mientras lo hacemos.",
+            "Te pongo las esposas con las manos a la espalda y tienes que darme placer solo con la boca.",
+            "Insúltame y dime cosas sucias en voz alta mientras lo hacemos. (Si hay gente: dímelas al oído tapándote la boca para que nadie más lo oiga, más otro reto de regalo).",
             "Hazte daño a ti mismo/a (pellizcos, nalgadas) para excitarme.",
             "Ponte de rodillas y ruega por mi polla/coño.",
             "Usa tu ropa interior usada para amordazarme.",
             "Follamos, pero si haces algún ruido, paramos (Silencio total).",
             "Ponte un tapón (o objeto) y mantenlo mientras haces otras cosas.",
             "Déjame tratarte como un muñeco/a (te muevo yo, tú flácido/a).",
-            "Hazme sexo oral mientras te azoto el culo.",
+            "Hazme sexo oral profundo mientras te azoto el culo.",
             "Inicia el sexo dormido (o simúlalo hasta que despiertes).",
-            "Competición: El primero que se corra pierde y recibe un castigo.",
+            "Competición de resistencia: Roce constante y agresivo. El primero que suplique acabar recibe un castigo.", 
             "Usa comida (nata, chocolate) en mis genitales y cómelo."
         ]
     }
